@@ -8,15 +8,17 @@ const server = app.listen(PORT, () => console.log(`💬 server on port ${PORT}`)
 
 // nice
 
-
 const io = require("socket.io")(server);
 
 app.use(express.static(path.join(__dirname, "public")));
 
-mongoose.connect("mongodb+srv://soumyadipojha635:MlbwG4KVGGBRjYAE@testgymchat.u75wdkc.mongodb.net/?retryWrites=true&w=majority&appName=testgymchat", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://soumyadipojha635:ZQgAO9ArFlU2bjAG@cluster0.i5uqcq6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 

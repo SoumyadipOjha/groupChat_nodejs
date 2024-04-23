@@ -53,12 +53,16 @@ function sendMessage() {
 }
 
 function addMessageToUI(isOwnMessage, data) {
-  clearFeedback();
-  const messageClass = isOwnMessage ? "message-right" : "message-left";
-  const element = `
-    <li class="message ${messageClass}">
+  const messageContainer = document.getElementById("message-container");
+
+  const messageClass = isOwnMessage ? "own-message" : "other-message";
+  const messageAlignment = isOwnMessage ? "right" : "left"; // Change alignment based on isOwnMessage
+
+  const messageContent = `
+    <li class="message ${messageClass}" style="text-align: ${messageAlignment};">
       <p class="message-content">
         ${data.message}
+        <br>
         <span class="message-info">${data.name} ● ${moment(
     data.dateTime
   ).fromNow()}</span>
@@ -66,7 +70,7 @@ function addMessageToUI(isOwnMessage, data) {
     </li>
   `;
 
-  messageContainer.innerHTML += element;
+  messageContainer.innerHTML += messageContent;
   scrollToBottom();
 }
 
